@@ -45,8 +45,7 @@ public class BoardForQueensPuzzle {
 	for ( int rank = 0; rank <= lastRankFilled; rank++ ) {
 	    for ( int otherRank = rank+1; otherRank <= lastRankFilled; otherRank++) {
 		if (filesWithQueens[rank]==filesWithQueens[otherRank] || // vertical
-		    filesWithQueens[rank]==filesWithQueens[otherRank]-(otherRank-rank) || // SE
-		    filesWithQueens[rank]==filesWithQueens[otherRank]+(otherRank-rank)) // SW
+		    Math.abs( filesWithQueens[rank]-filesWithQueens[otherRank]) == otherRank-rank ) // diagonal
 		    return true;
 	    }	    
 	}
@@ -67,7 +66,7 @@ public class BoardForQueensPuzzle {
      */
     public boolean accept() {
 	if (lastRankFilled == filesWithQueens.length-1) return !lastIsNg();
-	else return false;
+	return false;
     }
 
 
